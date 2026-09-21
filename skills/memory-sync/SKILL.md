@@ -25,10 +25,10 @@ You are running Zack McRay's memory consolidation loop. This is how the system l
 Read `instructions/orient.md`. Load current memory state, flag anything stale or drifting.
 
 ### Phase 2: Gather
-Read `instructions/gather.md`. Pull signal from all available sources: session transcripts, feedback log, Notion activity, file changes, calendar, and (added 2026-07-22) Supabase `os.memory_observations` (last 36 hours) plus `os.captures` activity counts for the briefing line.
+Read `instructions/gather.md`. Pull signal from all available sources: session transcripts, feedback log, Notion activity, file changes, calendar, and (added 2026-07-22) Supabase `os.memories` (last 36 hours, all writers) plus `os.captures` activity counts for the briefing line.
 
 ### Phase 3: Consolidate
-Read `instructions/consolidate.md`. Rewrite `40_OS/08_Memory/active-memory.md` with everything learned. Also (added 2026-07-22) write back 0-5 durable, self-contained observations per day to `os.memory_observations` with `source = 'cowork'` (see consolidate.md step 6). Observations are an input and an output of this pass, never a bypass around active-memory.md's single-writer rule. Use absolute dates. Every new entry carries `[w:N]` and `[src: <tag>]`. Follow the template in `templates/active-memory-template.md`.
+Read `instructions/consolidate.md`. Rewrite `40_OS/08_Memory/active-memory.md` with everything learned. Also (added 2026-07-22) write back 0-5 durable, self-contained observations per day to `os.memories` via `os.memory_write` with `source = 'cowork'` (see consolidate.md step 6). Observations are an input and an output of this pass, never a bypass around active-memory.md's single-writer rule. Use absolute dates. Every new entry carries `[w:N]` and `[src: <tag>]`. Follow the template in `templates/active-memory-template.md`.
 
 ### Phase 4: Prune
 Read `instructions/prune.md`. If active-memory.md exceeds 200 lines or ~25kb, archive overflow to `40_OS/08_Memory/memory-archive-YYYY-MM.md`, then compress.
